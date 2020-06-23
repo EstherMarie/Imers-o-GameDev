@@ -8,10 +8,10 @@ let music;
 let player;
 
 function preload() {
-  bg_clouds = loadImage('assets/images/background/bg-clouds.png');
-  bg_mountains = loadImage('assets/images/background/bg-mountains.png');
-  bg_trees = loadImage('assets/images/background/bg-trees.png');
-  bg_ground = loadImage('assets/images/background/ground.png');
+  bg_clouds = loadImage('assets/images/background/large-bg-clouds.png');
+  bg_mountains = loadImage('assets/images/background/large-bg-mountains.png');
+  bg_trees = loadImage('assets/images/background/large-bg-trees.png');
+  bg_ground = loadImage('assets/images/background/ground-large.png');
   sprite = loadImage('assets/images/player/sprites.png');
   music = loadSound('assets/sounds/the_valley.ogg');
 }

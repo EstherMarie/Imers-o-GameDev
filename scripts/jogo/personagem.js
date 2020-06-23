@@ -13,7 +13,7 @@ class Personagem {
   }
   
   exibe() {
-    image(this.imagem, 0, (height - 90), 90, 57, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], 57, 27);
+    image(this.imagem, 0, (height - 109), 90, 57, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], 57, 27);
     this.anima();
   }
   
