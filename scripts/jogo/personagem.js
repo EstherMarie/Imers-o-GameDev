@@ -2,8 +2,8 @@ class Personagem extends Animacao{
   constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){ 
       super(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite);
     this.imagem = imagem;
-    
-    this.yInicial = height - 105;//height - this.altura;
+
+    this.yInicial = height - 147;//height - this.altura;
     this.y = this.yInicial;
     this.velocidadeDoPulo = 0;
     this.gravidade = 3;
@@ -21,5 +21,26 @@ class Personagem extends Animacao{
     if(this.y > this.yInicial) {
       this.y = this.yInicial
     }
+  }
+
+  estaColidindo(inimigo) {
+    /* Para futuros debugs de hitbox:
+    noFill();
+    rect(this.x, this.y, this.largura, this.altura)
+    rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura); 
+    */
+    const precisao = .59;
+    const colisao = collideRectRect(
+      this.x, 
+      this.y, 
+      this.largura * precisao,
+      this.altura * precisao, 
+      inimigo.x, 
+      inimigo.y, 
+      inimigo.largura * precisao,
+      inimigo.altura * precisao
+      );
+
+    return colisao;
   }
 }

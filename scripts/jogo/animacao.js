@@ -1,5 +1,5 @@
 class Animacao {
-    constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){
+    constructor(matriz, imagem, x, largura, altura, larguraSprite, alturaSprite){ // altura, largura = alt. e larg. no canvas | larguraSprite = larg. no arquivo PNG.
     this.matriz = matriz;
     this.imagem = imagem;
     this.largura = largura;
@@ -22,7 +22,8 @@ class Animacao {
         
         if (this.frameAtual >= this.matriz.length - 1) {
           this.frameAtual = 0;
-        }
+        } 
+
     }
 
 }
