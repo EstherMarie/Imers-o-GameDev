@@ -15,6 +15,7 @@ class Animacao {
     exibe() {
         image(this.imagem, this.x, this.y, this.largura, this.altura, this.matriz[this.frameAtual][0], this.matriz[this.frameAtual][1], this.larguraSprite, this.alturaSprite);
         this.anima();
+        console.log(this.matriz[this.frameAtual])
     }
 
     anima() {
@@ -23,7 +24,6 @@ class Animacao {
         if (this.frameAtual >= this.matriz.length - 1) {
           this.frameAtual = 0;
         } 
-
     }
 
 }

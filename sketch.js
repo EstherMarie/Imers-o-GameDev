@@ -6,7 +6,9 @@ let sprite;
 let inimigo;
 let cenario;
 let music;
-let jumpSound
+let jumpSound;
+let itemSound;
+let hurtSound;
 
 const matrizPersonagem = [
   [10, 10],
@@ -25,21 +27,32 @@ const matrizPulo = [
 ];
 
 const matrizAnt = [
-  [10, 10],
-  [10, 50],
-  [10, 90],
-  [10, 130],
-  [10, 170],
-  [10, 210],
-  [10, 250],
-  [10, 190],
+  [350, 10],
+  [350, 50],
+  [350, 90],
+  [350, 130],
+  [350, 170],
+  [350, 210],
+  [350, 250],
+  [350, 190],
 ];
 
 const matrizGator = [
-  [60, 10],
-  [60, 60],
-  [60, 110],
-]
+  [400, 10],
+  [400, 60],
+  [400, 110],
+];
+
+const matrizHurt = [
+  [210, 10],
+  [210, 70],
+];
+
+const matrizAccorn = [
+  [310, 10],
+  [310, 30],
+  [310, 50],
+];
 
 function preload() {
   bg_clouds = loadImage('assets/images/background/large-bg-clouds.png');
@@ -50,6 +63,8 @@ function preload() {
   inimigo = loadImage('assets/images/enemies/enemies.png');
   music = loadSound('assets/sounds/the_valley.ogg');
   jumpSound = loadSound('assets/sounds/jump.ogg');
+  itemSound = loadSound('assets/sounds/item.ogg');
+  hurtSound = loadSound('assets/sounds/hurt.ogg');
 }
 
 function setup() {
@@ -73,6 +88,11 @@ function keyPressed() {
   } 
 }
 
+function mousePressed() {
+player.pula();
+jumpSound.play();
+}
+
 function draw() {
   clouds.exibe();
   clouds.move();
@@ -93,16 +113,26 @@ function draw() {
 
   if (player.estaColidindo(Ant)) {
     console.log('colidiu');
-    noLoop();
+    player.matriz = matrizHurt
+    hurtSound.play();
+    
+    // noLoop();
   }
 
   function pulo() {
-    if (player.y === 507) {
-      player.matriz = matrizPersonagem;
-    } else if (key = true) {
+    if (player.y != 507) {
       player.matriz = matrizPulo;
+    } else {
+      player.matriz = matrizPersonagem;
     }
+    // if (player.y === 507)  else if (keyIsPressed === true || mouseIsPressed === true) {
+    //   player.matriz = matrizPulo;
+    // }
   }
-  
+
+  // function collectItem (player, item) {
+  //   item.kill();
+  //   itemSound.play();
+  // }
 }
 
