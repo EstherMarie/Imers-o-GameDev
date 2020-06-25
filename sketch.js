@@ -9,6 +9,7 @@ let music;
 let jumpSound;
 let itemSound;
 let hurtSound;
+let item
 
 const matrizPersonagem = [
   [10, 10],
@@ -54,6 +55,8 @@ const matrizAccorn = [
   [310, 50],
 ];
 
+const inimigos = [];
+
 function preload() {
   bg_clouds = loadImage('assets/images/background/large-bg-clouds.png');
   bg_mountains = loadImage('assets/images/background/large-bg-mountains.png');
@@ -65,6 +68,7 @@ function preload() {
   jumpSound = loadSound('assets/sounds/jump.ogg');
   itemSound = loadSound('assets/sounds/item.ogg');
   hurtSound = loadSound('assets/sounds/hurt.ogg');
+  item = loadImage('assets/images/player/sprites.png');
 }
 
 function setup() {
@@ -73,10 +77,15 @@ function setup() {
   mountains = new Cenario (bg_mountains, .15);
   trees = new Cenario (bg_trees, .5);
   ground = new Cenario (bg_ground, 5);
-  player = new Personagem (matrizPersonagem, sprite, 10, 180, 116, 90, 58);
+  player = new Personagem (matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
   // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
-  Ant = new Inimigo (matrizAnt, inimigo, width - 50, 55, 47, 37, 31);
-  // enemyGator = new Inimigo (matrizGator, inimigo, width - 50, 92, 98, 46, 49);
+  const ant = new Inimigo (matrizAnt, inimigo, width - 50, 50, 55, 47, 37, 31, 13, 100);
+  const gator = new Inimigo (matrizGator, inimigo, width - 50, 230, 92, 98, 46, 49, 16, 500);
+  accorn = new Item (matrizAccorn, sprite, width - 20, 110, 32, 28, 16, 14);
+
+  inimigos.push(ant);
+  inimigos.push(gator);
+
   frameRate(25)
   music.loop();
 }
@@ -104,23 +113,41 @@ function draw() {
   ground.move();
   player.exibe();
   player.aplicaGravidade();
-  Ant.exibe();
-  Ant.move();
-  // enemyGator.exibe();
-  // enemyGator.move();
+  accorn.exibe();
+  accorn.move();
+  // ant.exibe();
+  // ant.move();
+  // gator.exibe();
+  // gator.move();
 
   pulo();
 
-  if (player.estaColidindo(Ant)) {
-    console.log('colidiu');
-    player.matriz = matrizHurt
-    hurtSound.play();
-    
+
+  inimigos.forEach(inimigo => {
+    inimigo.exibe();
+    inimigo.move();
+
+    if (player.estaColidindo(inimigo)) {
+      console.log('colidiu');
+      player.matriz = matrizHurt
+      hurtSound.play();
+      // noLoop();
+    }
+  })
+  
+
+  if (player.coletaItens(accorn)) {
+    console.log('coletou');
+    accorn.x = width + 500;
+    console.log(accorn.y)
+    itemSound.play();
+    // pontuação +100
     // noLoop();
+    
   }
 
   function pulo() {
-    if (player.y != 507) {
+    if (player.y != player.yInicial) {
       player.matriz = matrizPulo;
     } else {
       player.matriz = matrizPersonagem;
@@ -129,10 +156,5 @@ function draw() {
     //   player.matriz = matrizPulo;
     // }
   }
-
-  // function collectItem (player, item) {
-  //   item.kill();
-  //   itemSound.play();
-  // }
 }
 
