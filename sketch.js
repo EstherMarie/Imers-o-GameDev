@@ -4,12 +4,13 @@ let bg_trees;
 let ground;
 let sprite;
 let inimigo;
-let cenario;
 let music;
 let jumpSound;
 let itemSound;
 let hurtSound;
-let item
+let item;
+let points;
+let imgGameOver;
 
 const matrizPersonagem = [
   [10, 10],
@@ -55,6 +56,8 @@ const matrizAccorn = [
   [310, 50],
 ];
 
+const cenario = [];
+
 const inimigos = [];
 
 function preload() {
@@ -64,6 +67,7 @@ function preload() {
   bg_ground = loadImage('assets/images/background/ground-large.png');
   sprite = loadImage('assets/images/player/sprites.png');
   inimigo = loadImage('assets/images/enemies/enemies.png');
+  // imgGameOver = loadImage('assets/images/background/_______.png');
   music = loadSound('assets/sounds/the_valley.ogg');
   jumpSound = loadSound('assets/sounds/jump.ogg');
   itemSound = loadSound('assets/sounds/item.ogg');
@@ -76,15 +80,20 @@ function setup() {
   clouds = new Cenario (bg_clouds, .1);
   mountains = new Cenario (bg_mountains, .15);
   trees = new Cenario (bg_trees, .5);
-  ground = new Cenario (bg_ground, 5);
+  ground = new Cenario (bg_ground, 5, 0);
+  points = new Pontuacao();
   player = new Personagem (matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
   // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
   const ant = new Inimigo (matrizAnt, inimigo, width - 50, 50, 55, 47, 37, 31, 13, 100);
   const gator = new Inimigo (matrizGator, inimigo, width - 50, 230, 92, 98, 46, 49, 16, 500);
-  accorn = new Item (matrizAccorn, sprite, width - 20, 110, 32, 28, 16, 14);
+  accorn = new Item (matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
 
   inimigos.push(ant);
   inimigos.push(gator);
+
+  cenario.push(clouds);
+  cenario.push(mountains);
+  cenario.push(trees);
 
   frameRate(25)
   music.loop();
@@ -111,6 +120,8 @@ function draw() {
   trees.move();
   ground.exibe();
   ground.move();
+  points.exibe();
+  points.adicionarPontos();
   player.exibe();
   player.aplicaGravidade();
   accorn.exibe();
@@ -131,6 +142,7 @@ function draw() {
       console.log('colidiu');
       player.matriz = matrizHurt
       hurtSound.play();
+      // image(imgGameOver, width/2 - 200, height/3)
       // noLoop();
     }
   })
@@ -138,10 +150,11 @@ function draw() {
 
   if (player.coletaItens(accorn)) {
     console.log('coletou');
-    accorn.x = width + 500;
+    accorn.x = width + 550;
     console.log(accorn.y)
     itemSound.play();
-    // pontuação +100
+    
+    
     // noLoop();
     
   }
