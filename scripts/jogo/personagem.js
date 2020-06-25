@@ -19,8 +19,8 @@ class Personagem extends Animacao{
   }
 
   aplicaGravidade() {
-    this.y = this.y + this.velocidadeDoPulo;
-    this.velocidadeDoPulo = this.velocidadeDoPulo + this.gravidade
+    this.y += this.velocidadeDoPulo;
+    this.velocidadeDoPulo += this.gravidade
     
 
     if(this.y > this.yInicial) {

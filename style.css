@@ -1,8 +1,24 @@
 html, body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #0a89ff;
 }
 canvas {
   display: block;
+  font-family: 'Press Start 2P', cursive;
+}
+
+.loadingclass {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadingImg {
+  width: 20%;
+  height: auto;
 }

@@ -8,9 +8,11 @@ let music;
 let jumpSound;
 let itemSound;
 let hurtSound;
-let item;
 let points;
-let imgGameOver;
+// let gamestart;
+// let pressEnter;
+// let imgGameOver;
+let font;
 
 const matrizPersonagem = [
   [10, 10],
@@ -67,12 +69,15 @@ function preload() {
   bg_ground = loadImage('assets/images/background/ground-large.png');
   sprite = loadImage('assets/images/player/sprites.png');
   inimigo = loadImage('assets/images/enemies/enemies.png');
+  // gamestart = loadImage('assets/images/sprites/title-screen.png');
+  // pressEnter = loadImage('assets/images/sprites/press-enter.png');
   // imgGameOver = loadImage('assets/images/background/_______.png');
   music = loadSound('assets/sounds/the_valley.ogg');
   jumpSound = loadSound('assets/sounds/jump.ogg');
   itemSound = loadSound('assets/sounds/item.ogg');
   hurtSound = loadSound('assets/sounds/hurt.ogg');
-  item = loadImage('assets/images/player/sprites.png');
+  font = loadFont('assets/font/04B_03__.TTF');
+  
 }
 
 function setup() {
@@ -87,6 +92,7 @@ function setup() {
   const ant = new Inimigo (matrizAnt, inimigo, width - 50, 50, 55, 47, 37, 31, 13, 100);
   const gator = new Inimigo (matrizGator, inimigo, width - 50, 230, 92, 98, 46, 49, 16, 500);
   accorn = new Item (matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
+  textFont(font);;
 
   inimigos.push(ant);
   inimigos.push(gator);
@@ -130,7 +136,7 @@ function draw() {
   // ant.move();
   // gator.exibe();
   // gator.move();
-
+  console.log(points.adicionarPontos())
   pulo();
 
 
@@ -139,24 +145,26 @@ function draw() {
     inimigo.move();
 
     if (player.estaColidindo(inimigo)) {
-      console.log('colidiu');
+      // console.log('colidiu');
       player.matriz = matrizHurt
       hurtSound.play();
+      // points.adicionarPontos(-5);
       // image(imgGameOver, width/2 - 200, height/3)
       // noLoop();
+      // points -= 50
+      // Insira aqui mais uma tentativa frustrada de subtrair pontos ao colidir.
     }
   })
   
 
   if (player.coletaItens(accorn)) {
-    console.log('coletou');
+    // console.log('coletou');
     accorn.x = width + 550;
-    console.log(accorn.y)
+    // console.log(accorn.y)
     itemSound.play();
-    
-    
+    // points.adicionarPontos(100);
     // noLoop();
-    
+    // points += 100
   }
 
   function pulo() {
@@ -170,4 +178,3 @@ function draw() {
     // }
   }
 }
-
