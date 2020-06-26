@@ -30,21 +30,20 @@ class Personagem extends Animacao{
   }
 
   estaColidindo(inimigo) {
-    /* Para futuros debugs de hitbox:
+    // Para futuros debugs de hitbox:
     noFill();
-    rect(this.x, this.y, this.largura, this.altura)
-    rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura); 
-    */
+    circle(this.x + this.largura-100, this.y + this.altura-50, this.altura-30)
+    circle(inimigo.x + inimigo.largura-20, inimigo.y + inimigo.largura-40, inimigo.largura-25); 
+    
+    // collideCircleCircle(circleX, circleY, circleDiameter, circleX2, circleY2, circleDiameter2)
     const precisao = .59;
-    const colisao = collideRectRect(
-      this.x, 
-      this.y, 
-      this.largura * precisao,
-      this.altura * precisao, 
-      inimigo.x, 
-      inimigo.y, 
-      inimigo.largura * precisao,
-      inimigo.altura * precisao
+    const colisao = collideCircleCircle(
+      this.x + this.largura-100, 
+      this.y + this.altura-50,
+      this.altura-30,
+      inimigo.x + inimigo.largura-20,
+      inimigo.y + inimigo.largura-40,
+      inimigo.largura-25
       );
 
     return colisao;
