@@ -9,10 +9,13 @@ let jumpSound;
 let itemSound;
 let hurtSound;
 let points;
-// let gamestart;
+let gamestart;
+let title;
 // let pressEnter;
 let gameOver;
 let font;
+
+let inimigoAtual = 0;
 
 const matrizPersonagem = [
   [10, 10],
@@ -80,7 +83,8 @@ function preload() {
   bg_ground = loadImage('assets/images/background/ground-large.png');
   sprite = loadImage('assets/images/player/sprites.png');
   inimigo = loadImage('assets/images/enemies/enemies.png');
-  // gamestart = loadImage('assets/images/sprites/title-screen.png');
+  gamestart = loadImage('assets/images/background/game-start-bg.png');
+  title = loadImage('assets/images/sprites/title-screen.png');
   // pressEnter = loadImage('assets/images/sprites/press-enter.png');
   gameOver = loadImage('assets/images/sprites/game-over-text.png');
   music = loadSound('assets/sounds/the_valley.ogg');
@@ -146,16 +150,16 @@ function draw() {
   
   pulo();
 
-  const inimigo = inimigos[this.inimigoAtual];
+  const inimigo = inimigos[inimigoAtual];
   const inimigoVisivel = inimigo.x < -inimigo.largura;
 
   inimigo.exibe();
   inimigo.move();
 
   if(inimigoVisivel) {
-    this.inimigoAtual++;
-    if(this.inimigoAtual > inimigos.length-1) {
-        this.inimigoAtual = 0;
+    inimigoAtual++;
+    if(inimigoAtual > inimigos.length-1) {
+        inimigoAtual = 0;
     }
     inimigo.velocidade = parseInt(random(15,40));
   }
