@@ -5,7 +5,8 @@ function preload() {
     bg_ground = loadImage('assets/images/background/ground-large.png');
     sprite = loadImage('assets/images/player/sprites.png');
     inimigo = loadImage('assets/images/enemies/enemies.png');
-    // gamestart = loadImage('assets/images/sprites/title-screen.png');
+    title = loadImage('assets/images/sprites/title-screen.png');
+    startScreen = loadImage('assets/images/sprites/start-screen.png');
     // pressEnter = loadImage('assets/images/sprites/press-enter.png');
     gameOver = loadImage('assets/images/sprites/game-over-text.png');
     music = loadSound('assets/sounds/the_valley.ogg');
@@ -14,4 +15,4 @@ function preload() {
     hurtSound = loadSound('assets/sounds/hurt.ogg');
     font = loadFont('assets/font/04B_03__.TTF');
     
-  }
+}

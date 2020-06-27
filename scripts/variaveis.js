@@ -1,20 +1,33 @@
 let bg_clouds;
 let bg_mountains;
 let bg_trees;
+let clouds;
+let mountains;
+let trees;
 let ground;
+
 let sprite;
+let player;
+let accorn;
 let inimigo;
+
 let music;
 let jumpSound;
 let itemSound;
 let hurtSound;
 let points;
-// let gamestart;
+let startScreen;
+let title;
 // let pressEnter;
 let GameOver;
 let font;
 
-let inimigoAtual = 0;
+let jogo;
+let telaInicial;
+let cenaAtual = 'telaInicial';
+let cenas;
+let botaoGerenciador;
+
 
 const matrizPersonagem = [
   [10, 10],
@@ -57,7 +70,7 @@ const matrizGrasshopper = [
   [580, 10],
   [580, 60],
   [460, 10],
-  [460, 60]
+  [460, 60],
 ];
 
 const matrizHurt = [
