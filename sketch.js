@@ -106,7 +106,7 @@ function setup() {
   const grasshopper = new Inimigo (matrizGrasshopper, inimigo, width, 26, 104, 90, 52, 45, 16, 100);
   const gator = new Inimigo (matrizGator, inimigo, width, 170, 92, 98, 46, 49, 19, 100);
   accorn = new Item (matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
-  textFont(font);;
+  textFont(font);
 
   inimigos.push(ant);
   inimigos.push(grasshopper);
