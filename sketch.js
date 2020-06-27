@@ -11,8 +11,10 @@ let hurtSound;
 let points;
 // let gamestart;
 // let pressEnter;
-// let imgGameOver;
+let GameOver;
 let font;
+
+let inimigoAtual = 0;
 
 const matrizPersonagem = [
   [10, 10],
@@ -47,6 +49,17 @@ const matrizGator = [
   [400, 110],
 ];
 
+const matrizGrasshopper = [
+  [520, 10],
+  [520, 60],
+  [520, 110],
+  [520, 160],
+  [580, 10],
+  [580, 60],
+  [460, 10],
+  [460, 60]
+];
+
 const matrizHurt = [
   [210, 10],
   [210, 70],
@@ -71,7 +84,7 @@ function preload() {
   inimigo = loadImage('assets/images/enemies/enemies.png');
   // gamestart = loadImage('assets/images/sprites/title-screen.png');
   // pressEnter = loadImage('assets/images/sprites/press-enter.png');
-  // imgGameOver = loadImage('assets/images/background/_______.png');
+  gameOver = loadImage('assets/images/sprites/game-over-text.png');
   music = loadSound('assets/sounds/the_valley.ogg');
   jumpSound = loadSound('assets/sounds/jump.ogg');
   itemSound = loadSound('assets/sounds/item.ogg');
@@ -85,16 +98,18 @@ function setup() {
   clouds = new Cenario (bg_clouds, .1);
   mountains = new Cenario (bg_mountains, .15);
   trees = new Cenario (bg_trees, .5);
-  ground = new Cenario (bg_ground, 5, 0);
+  ground = new Cenario (bg_ground, 10);
   points = new Pontuacao();
   player = new Personagem (matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
   // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
-  const ant = new Inimigo (matrizAnt, inimigo, width - 50, 50, 55, 47, 37, 31, 13, 100);
-  const gator = new Inimigo (matrizGator, inimigo, width - 50, 230, 92, 98, 46, 49, 16, 500);
+  const ant = new Inimigo (matrizAnt, inimigo, width, 50, 55, 47, 37, 31, 13, 100);
+  const grasshopper = new Inimigo (matrizGrasshopper, inimigo, width, 26, 104, 90, 52, 45, 16, 100);
+  const gator = new Inimigo (matrizGator, inimigo, width, 170, 92, 98, 46, 49, 19, 100);
   accorn = new Item (matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
   textFont(font);;
 
   inimigos.push(ant);
+  inimigos.push(grasshopper);
   inimigos.push(gator);
 
   cenario.push(clouds);
@@ -132,29 +147,33 @@ function draw() {
   player.aplicaGravidade();
   accorn.exibe();
   accorn.move();
-  // ant.exibe();
-  // ant.move();
-  // gator.exibe();
-  // gator.move();
-  console.log(points.adicionarPontos())
+  
   pulo();
 
 
-  inimigos.forEach(inimigo => {
-    inimigo.exibe();
-    inimigo.move();
+  const inimigo = inimigos[inimigoAtual];
+  const inimigoVisivel = inimigo.x < -inimigo.largura;
 
-    if (player.estaColidindo(inimigo)) {
-      // console.log('colidiu');
-      player.matriz = matrizHurt
-      hurtSound.play();
-      // points.adicionarPontos(-5);
-      // image(imgGameOver, width/2 - 200, height/3)
-      // noLoop();
-      // points -= 50
-      // Insira aqui mais uma tentativa frustrada de subtrair pontos ao colidir.
+  inimigo.exibe();
+  inimigo.move();
+
+  if(inimigoVisivel) {
+    inimigoAtual++;
+    if(inimigoAtual > inimigos.length-1) {
+      inimigoAtual = 0;
     }
-  })
+    inimigo.velocidade = parseInt(random(15,40));
+  }
+
+  if (player.estaColidindo(inimigo)) {
+    // console.log('colidiu');
+    player.matriz = matrizHurt
+    hurtSound.play();
+    
+    image(gameOver, width/2 - 200, height/3)
+    noLoop();
+    
+}
   
 
   if (player.coletaItens(accorn)) {
