@@ -13,7 +13,7 @@ function setup() {
     telaInicial
   };
 
-  botaoGerenciador = new BotaoGerenciador('Iniciar', width/2, height/2 + 150);
+  botaoGerenciador = new BotaoGerenciador('Iniciar', width/2, height/2);
 }
 
 function keyPressed() {
