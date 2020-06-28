@@ -29,10 +29,10 @@ class Inimigo extends Animacao {
   }
 
   move() {
-    this.x = this.x - this.velocidade;
+    this.x = this.x - this.velocidade
+  }
 
-    if (this.x < -this.largura) {
-      this.x = width;
-    }
+  aparece() {
+    this.x = width
   }
 }
