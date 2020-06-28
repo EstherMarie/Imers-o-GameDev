@@ -108,7 +108,7 @@ class Jogo {
       // hurtSound.play();
 
       image(gameOver, width / 2 - 200, height / 3);
-      noLoop();
+      // noLoop();
     }
 
     if (player.coletaItens(accorn)) {
