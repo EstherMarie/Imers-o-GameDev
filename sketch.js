@@ -3,7 +3,7 @@ function setup() {
 
   textFont(font);
   frameRate(25);
-  music.loop();
+  // music.loop();
 
   jogo = new Jogo();
   telaInicial = new TelaInicial();
