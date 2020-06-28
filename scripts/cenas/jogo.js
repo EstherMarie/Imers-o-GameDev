@@ -21,8 +21,7 @@ class Jogo {
       47,
       37,
       31,
-      13,
-      100
+      13
     );
     const grasshopper = new Inimigo(
       matrizGrasshopper,
@@ -33,8 +32,7 @@ class Jogo {
       90,
       52,
       45,
-      16,
-      100
+      16
     );
     const gator = new Inimigo(
       matrizGator,
@@ -45,8 +43,7 @@ class Jogo {
       98,
       46,
       49,
-      19,
-      100
+      19
     );
     accorn = new Item(matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
 
