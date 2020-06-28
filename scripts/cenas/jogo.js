@@ -108,6 +108,7 @@ class Jogo {
       // console.log('colidiu');
       player.matriz = matrizHurt;
       hurtSound.play();
+      vida.perdeVida();
 
       image(gameOver, width / 2 - 200, height / 3);
       // noLoop();
