@@ -90,16 +90,18 @@ class Jogo {
     const inimigo = inimigos[this.inimigoAtual];
     const inimigoVisivel = inimigo.x < -inimigo.largura;
 
+    inimigo.velocidade = linhaAtual.velocidade;
+
     inimigo.exibe();
     inimigo.move();
 
     if (inimigoVisivel) {
-      this.inimigoAtual++;
+      this.indice++;
       inimigo.aparece();
-      if (this.inimigoAtual > inimigos.length - 1) {
-        this.inimigoAtual = 0;
+      if (this.indice > this.mapa.length - 1) {
+        this.indice = 0;
       }
-      inimigo.velocidade = parseInt(random(15, 40));
+      
     }
 
     if (player.estaColidindo(inimigo)) {
@@ -108,8 +110,10 @@ class Jogo {
       hurtSound.play();
       vida.perdeVida();
 
-      image(gameOver, width / 2 - 200, height / 3);
-      // noLoop();
+      if(vida.vidas === 0) {
+        image(gameOver, width / 2 - 200, height / 3);
+        noLoop();
+      }
     }
 
     if (player.coletaItens(accorn)) {
