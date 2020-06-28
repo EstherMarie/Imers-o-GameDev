@@ -95,6 +95,7 @@ class Jogo {
 
     if (inimigoVisivel) {
       this.inimigoAtual++;
+      inimigo.aparece();
       if (this.inimigoAtual > inimigos.length - 1) {
         this.inimigoAtual = 0;
       }
