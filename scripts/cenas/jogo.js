@@ -61,13 +61,13 @@ class Jogo {
   keyPress(key) {
     if (key === "ArrowUp") {
       player.pula();
-      // jumpSound.play();
+      jumpSound.play();
     }
   }
 
   mouseClick(key) {
     player.pula();
-    // jumpSound.play();
+    jumpSound.play();
   }
 
   draw() {
@@ -105,7 +105,7 @@ class Jogo {
     if (player.estaColidindo(inimigo)) {
       // console.log('colidiu');
       player.matriz = matrizHurt;
-      // hurtSound.play();
+      hurtSound.play();
 
       image(gameOver, width / 2 - 200, height / 3);
       // noLoop();
