@@ -106,9 +106,12 @@ class Jogo {
       // console.log('colidiu');
       player.matriz = matrizHurt;
       hurtSound.play();
-
-      image(gameOver, width / 2 - 200, height / 3);
-      // noLoop();
+      vida.perdeVida();
+      player.ficaInvencivel(); // tornarInvencivel()
+      if(vida.vidas === 0) {
+         image(gameOver, width / 2 - 200, height / 3);
+         noLoop();
+      }
     }
 
     if (player.coletaItens(accorn)) {
