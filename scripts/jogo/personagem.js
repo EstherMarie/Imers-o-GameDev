@@ -27,6 +27,7 @@ class Personagem extends Animacao {
     this.gravidade = 5;
     this.alturaDoPulo = -33;
     this.pulos = 0;
+    this.invencivel = false;
   }
 
   pula() {
@@ -46,7 +47,18 @@ class Personagem extends Animacao {
     }
   }
 
+
+  ficaInvencivel() {
+    this.invencivel = true;
+    setTimeout(() => {
+      this.invencivel = false;
+    }, 1000)
+  }
+
   estaColidindo(inimigo) {
+    if(this.invencivel) {
+       return false;
+    }
     /* Para futuros debugs de hitbox:
     noFill();
     circle(this.x + this.largura-100, this.y + this.altura-50, this.altura-30)

@@ -1,6 +1,6 @@
 class Jogo {
   constructor() {
-    this.inimigoAtual = 0;
+    this.indice = 0;
   }
 
   setup() {
@@ -86,8 +86,8 @@ class Jogo {
     vida.draw();
 
     pulo();
-
-    const inimigo = inimigos[this.inimigoAtual];
+    const linhaAtual = this.mapa[this.indice]
+    const inimigo = inimigos[linhaAtual.inimigo];
     const inimigoVisivel = inimigo.x < -inimigo.largura;
 
     inimigo.velocidade = linhaAtual.velocidade;
@@ -101,7 +101,6 @@ class Jogo {
       if (this.indice > this.mapa.length - 1) {
         this.indice = 0;
       }
-      
     }
 
     if (player.estaColidindo(inimigo)) {
@@ -110,9 +109,10 @@ class Jogo {
       hurtSound.play();
       vida.perdeVida();
 
+      player.ficaInvencivel(); // tornarInvencivel()
       if(vida.vidas === 0) {
-        image(gameOver, width / 2 - 200, height / 3);
-        noLoop();
+         image(gameOver, width / 2 - 200, height / 3);
+         noLoop();
       }
     }
 

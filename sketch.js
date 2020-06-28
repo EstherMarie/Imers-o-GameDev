@@ -21,7 +21,7 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  mouseClick(key)
+  jogo.mouseClick(key)
 }
 
 function draw() {
