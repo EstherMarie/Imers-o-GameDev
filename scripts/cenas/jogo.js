@@ -10,6 +10,7 @@ class Jogo {
     ground = new Cenario(bg_ground, 10);
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
+    vida = new Vida(vida)
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
     const ant = new Inimigo(
       matrizAnt,
