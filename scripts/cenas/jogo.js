@@ -1,24 +1,6 @@
 class Jogo {
   constructor() {
     this.indice = 0;
-    this.mapa = [
-       {
-        inimigo: 0,
-        velocidade: 10
-       },
-       {
-        inimigo: 1,
-        velocidade: 30
-       },
-       {
-        inimigo: 2,
-        velocidade: 20
-       },
-       {
-        inimigo: 0,
-        velocidade: 15
-       }
-    ]
   }
 
   setup() {
