@@ -30,7 +30,7 @@ class Vida {
    }
 
    perdeVida() {
-      this.vida--
+      this.vidas--
    }
 
 }
