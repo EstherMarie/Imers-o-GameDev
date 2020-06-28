@@ -1,24 +1,6 @@
 class Jogo {
   constructor() {
     this.indice = 0;
-    this.mapa = [
-       {
-        inimigo: 0,
-        velocidade: 10
-       },
-       {
-        inimigo: 1,
-        velocidade: 30
-       },
-       {
-        inimigo: 2,
-        velocidade: 20
-       },
-       {
-        inimigo: 0,
-        velocidade: 15
-       }
-    ]
   }
 
   setup() {
@@ -28,6 +10,7 @@ class Jogo {
     ground = new Cenario(bg_ground, 10);
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
+    vida = new Vida(vida)
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
     const ant = new Inimigo(
       matrizAnt,
@@ -38,8 +21,7 @@ class Jogo {
       47,
       37,
       31,
-      13,
-      100
+      13
     );
     const grasshopper = new Inimigo(
       matrizGrasshopper,
@@ -50,8 +32,7 @@ class Jogo {
       90,
       52,
       45,
-      16,
-      100
+      16
     );
     const gator = new Inimigo(
       matrizGator,
@@ -62,8 +43,7 @@ class Jogo {
       98,
       46,
       49,
-      19,
-      100
+      19
     );
     accorn = new Item(matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
 
@@ -103,6 +83,7 @@ class Jogo {
     player.aplicaGravidade();
     accorn.exibe();
     accorn.move();
+    vida.draw();
 
     pulo();
     const linhaAtual = this.mapa[this.indice]
@@ -116,10 +97,10 @@ class Jogo {
 
     if (inimigoVisivel) {
       this.indice++;
+      inimigo.aparece();
       if (this.indice > this.mapa.length - 1) {
         this.indice = 0;
       }
-       
     }
 
     if (player.estaColidindo(inimigo)) {
@@ -127,6 +108,7 @@ class Jogo {
       player.matriz = matrizHurt;
       hurtSound.play();
       vida.perdeVida();
+
       player.ficaInvencivel(); // tornarInvencivel()
       if(vida.vidas === 0) {
          image(gameOver, width / 2 - 200, height / 3);

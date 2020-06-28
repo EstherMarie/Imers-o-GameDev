@@ -10,7 +10,8 @@ class TelaInicial {
     }
 
     _imagemDeFundo() {
-        image(startScreen, 0, 0, width, height)
+        let imgMove = .2;
+        image(startScreen, 0, 0, width, height, mouseX * umgMove, mouseY * imgMkve, img_inicio.width * imgMove, img_inicio.height * imgMove)
     }
 
     _titulo() {
