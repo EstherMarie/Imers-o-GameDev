@@ -86,6 +86,7 @@ class Jogo {
     player.aplicaGravidade();
     accorn.exibe();
     accorn.move();
+    vida.draw();
 
     pulo();
 
