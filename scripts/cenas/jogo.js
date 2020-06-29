@@ -120,6 +120,7 @@ class Jogo {
         btnNovoJogo.mousePressed(() => {
           btnNovoJogo.remove();
           loop();
+          player.tornarInvencivel();
           inimigos.pop();
           inimigos.x = width;
           this.indice = 0;
