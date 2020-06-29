@@ -7,7 +7,8 @@ class Item extends Animacao {
     largura,
     altura,
     larguraSprite,
-    alturaSprite
+    alturaSprite,
+    inicial
   ) {
     super(
       matriz,
@@ -17,11 +18,13 @@ class Item extends Animacao {
       largura,
       altura,
       larguraSprite,
-      alturaSprite
+      alturaSprite,
+      inicial
     );
 
     this.yInicial = height - this.altura - variacaoY;
     this.y = this.yInicial;
+    this.item = this.inicial
     // this.y = alturaY[Math.round(Math.random()*10)];/*-height - 307;*/
     this.velocidade = 19;
   }
@@ -32,6 +35,10 @@ class Item extends Animacao {
     if (this.x < -this.largura) {
       this.x = width;
     }
+  }
+
+  ganhaItem() {
+    this.item++
   }
 
   // posicaoY() {

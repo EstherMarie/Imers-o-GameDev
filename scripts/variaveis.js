@@ -9,6 +9,7 @@ let ground;
 let sprite;
 let player;
 let accorn;
+let item;
 let inimigo;
 let vida;
 let life;

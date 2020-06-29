@@ -13,4 +13,12 @@ class Pontuacao {
   adicionarPontos() {
     this.pontos += 0.2;
   }
+
+  itemPontos() {
+    this.pontos += 150;
+  }
+
+  colisaoPontos() {
+    this.pontos -= 100;
+  }
 }

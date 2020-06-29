@@ -8,11 +8,11 @@ class Jogo {
     clouds = new Cenario(bg_clouds, 0.1);
     mountains = new Cenario(bg_mountains, 0.15);
     trees = new Cenario(bg_trees, 0.5);
-    ground = new Cenario(bg_ground, 10);
+    ground = new Cenario(bg_ground, 8);
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
-    accorn = new Item(matrizAccorn, sprite, width - 20, 150, 32, 28, 16, 14);
+    accorn = new Item(matrizAccorn, sprite, width - 20, 150, 32, 28, 16, 14, 0);
     life = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
     const ant = new Inimigo(
       matrizAnt,
@@ -112,6 +112,7 @@ class Jogo {
       hurtSound.play();
       life.perdeVida();
       player.tornarInvencivel();
+      points.colisaoPontos()
 
       if(life.vidas === 0) {
         image(gameOver, width / 2 - 200, height / 3);
@@ -123,11 +124,12 @@ class Jogo {
     if (player.coletaItens(accorn)) {
       // console.log('coletou');
       accorn.x = width + 550;
-      // console.log(accorn.y)
       itemSound.play();
-      // points.adicionarPontos(100);
-      // noLoop();
-      // points += 100
+      points.itemPontos();
+      
+      if(item === 5) {
+        life.ganhaVida();
+      }
     }
 
     function pulo() {
