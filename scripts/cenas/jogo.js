@@ -1,6 +1,28 @@
 class Jogo {
   constructor() {
-    this.inimigoAtual = 0;
+    this.indice = 0;
+    this.mapa = [
+      {
+        inimigo: 0,
+        velocidade: 14
+      },
+      {
+        inimigo: 2,
+        velocidade: 40
+      },
+      {
+        inimigo: 1,
+        velocidade: 30
+      },
+      {
+        inimigo: 0,
+        velocidade: 20
+      },
+      {
+        inimigo: 1,
+        velocidade: 35
+      },
+    ];
   }
 
   setup() {
@@ -11,8 +33,8 @@ class Jogo {
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
-    accorn = new Item(matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
-    life = new Vida(3, 3);
+    accorn = new Item(matrizAccorn, sprite, width - 20, 150, 32, 28, 16, 14);
+    life = new Vida(5, 3);
     const ant = new Inimigo(
       matrizAnt,
       inimigo,
@@ -22,8 +44,7 @@ class Jogo {
       47,
       37,
       31,
-      13,
-      100
+      13
     );
     const grasshopper = new Inimigo(
       matrizGrasshopper,
@@ -34,8 +55,7 @@ class Jogo {
       90,
       52,
       45,
-      16,
-      100
+      16
     );
     const gator = new Inimigo(
       matrizGator,
@@ -46,8 +66,7 @@ class Jogo {
       98,
       46,
       49,
-      19,
-      100
+      19
     );
 
     inimigos.push(ant);
@@ -90,18 +109,22 @@ class Jogo {
 
     pulo();
 
-    const inimigo = inimigos[this.inimigoAtual];
+    const linhaAtual = this.mapa[this.indice];
+
+    const inimigo = inimigos[linhaAtual.inimigo];
     const inimigoVisivel = inimigo.x < -inimigo.largura;
+
+    inimigo.velocidade = linhaAtual.velocidade;
 
     inimigo.exibe();
     inimigo.move();
 
     if (inimigoVisivel) {
-      this.inimigoAtual++;
-      if (this.inimigoAtual > inimigos.length - 1) {
-        this.inimigoAtual = 0;
+      this.indice++;
+      inimigo.aparece();
+      if (this.indice > this.mapa.length - 1) {
+        this.indice = 0;
       }
-      inimigo.velocidade = parseInt(random(15, 40));
     }
 
     if (player.estaColidindo(inimigo)) {
