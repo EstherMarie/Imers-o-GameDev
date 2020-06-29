@@ -12,6 +12,7 @@ let accorn;
 let inimigo;
 let vida;
 let life;
+let fita;
 
 let music;
 let jumpSound;

@@ -14,6 +14,7 @@ function preload() {
     jumpSound = loadSound('assets/sounds/jump.ogg');
     itemSound = loadSound('assets/sounds/item.ogg');
     hurtSound = loadSound('assets/sounds/hurt.ogg');
+    fita = loadJSON('cartucho/fita.json')
     font = loadFont('assets/font/04B_03__.TTF');
     
 }

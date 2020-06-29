@@ -1,28 +1,7 @@
 class Jogo {
   constructor() {
     this.indice = 0;
-    this.mapa = [
-      {
-        inimigo: 0,
-        velocidade: 14
-      },
-      {
-        inimigo: 2,
-        velocidade: 40
-      },
-      {
-        inimigo: 1,
-        velocidade: 30
-      },
-      {
-        inimigo: 0,
-        velocidade: 20
-      },
-      {
-        inimigo: 1,
-        velocidade: 35
-      },
-    ];
+    this.mapa = fita.mapa;
   }
 
   setup() {
@@ -34,7 +13,7 @@ class Jogo {
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
     accorn = new Item(matrizAccorn, sprite, width - 20, 150, 32, 28, 16, 14);
-    life = new Vida(5, 3);
+    life = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
     const ant = new Inimigo(
       matrizAnt,
       inimigo,
