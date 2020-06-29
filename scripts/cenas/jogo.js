@@ -33,7 +33,7 @@ class Jogo {
       matrizGator,
       inimigo,
       width,
-      170,
+      150,
       92,
       98,
       46,
@@ -119,8 +119,9 @@ class Jogo {
         );
         btnNovoJogo.mousePressed(() => {
           btnNovoJogo.remove();
-          loop();
           player.tornarInvencivel();
+          inimigo.aparece();
+          loop();
           inimigos.pop();
           inimigos.x = width;
           this.indice = 0;
@@ -136,10 +137,7 @@ class Jogo {
       accorn.x = width + 550;
       itemSound.play();
       points.itemPontos();
-
-      if (item === 5) {
-        life.ganhaVida();
-      }
+      accorn.ganhaItem();
     }
 
     function pulo() {
