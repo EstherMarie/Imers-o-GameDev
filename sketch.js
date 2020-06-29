@@ -10,10 +10,10 @@ function setup() {
   jogo.setup();
   cenas = {
     jogo,
-    telaInicial
+    telaInicial,
   };
 
-  botaoGerenciador = new BotaoGerenciador('Iniciar', width/2, height/2);
+  botaoGerenciador = new BotaoGerenciador("Iniciar", width / 2, height / 2);
 }
 
 function keyPressed() {
@@ -21,7 +21,7 @@ function keyPressed() {
 }
 
 function mousePressed() {
-  jogo.mouseClick(key)
+  jogo.mouseClick(key);
 }
 
 function draw() {

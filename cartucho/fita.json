@@ -1,29 +1,28 @@
-
 {
-    "configuracoes": {
-        "vidaMaxima": 5,
-        "vidaInicial": 3
+  "configuracoes": {
+    "vidaMaxima": 5,
+    "vidaInicial": 3
+  },
+  "mapa": [
+    {
+      "inimigo": 0,
+      "velocidade": 14
     },
-    "mapa": [
-      {
-        "inimigo": 0,
-        "velocidade": 14
-      },
-      {
-        "inimigo": 2,
-        "velocidade": 40
-      },
-      {
-        "inimigo": 1,
-        "velocidade": 30
-      },
-      {
-        "inimigo": 0,
-        "velocidade": 20
-      },
-      {
-        "inimigo": 1,
-        "velocidade": 35
-      }
-    ]
+    {
+      "inimigo": 2,
+      "velocidade": 40
+    },
+    {
+      "inimigo": 1,
+      "velocidade": 30
+    },
+    {
+      "inimigo": 0,
+      "velocidade": 20
+    },
+    {
+      "inimigo": 1,
+      "velocidade": 35
+    }
+  ]
 }

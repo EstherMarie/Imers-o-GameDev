@@ -24,7 +24,7 @@ class Item extends Animacao {
 
     this.yInicial = height - this.altura - variacaoY;
     this.y = this.yInicial;
-    this.item = this.inicial
+    this.item = this.inicial;
     // this.y = alturaY[Math.round(Math.random()*10)];/*-height - 307;*/
     this.velocidade = 19;
   }
@@ -38,7 +38,7 @@ class Item extends Animacao {
   }
 
   ganhaItem() {
-    this.item++
+    this.item++;
   }
 
   // posicaoY() {

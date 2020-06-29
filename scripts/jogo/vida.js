@@ -19,12 +19,12 @@ class Vida {
   }
 
   ganhaVida() {
-      if(this.vidas <= this.total) {
-          this.vidas++
-      }
+    if (this.vidas <= this.total) {
+      this.vidas++;
+    }
   }
 
   perdeVida() {
-      this.vidas--
+    this.vidas--;
   }
 }

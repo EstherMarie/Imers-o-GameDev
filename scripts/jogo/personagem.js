@@ -50,13 +50,13 @@ class Personagem extends Animacao {
   tornarInvencivel() {
     this.invencivel = true;
     setTimeout(() => {
-      this.invencivel = false
-    }, 1000)
+      this.invencivel = false;
+    }, 1000);
   }
 
   estaColidindo(inimigo) {
-    if(this.invencivel) {
-      return false
+    if (this.invencivel) {
+      return false;
     }
     /* Para futuros debugs de hitbox:
     noFill();

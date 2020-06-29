@@ -33,6 +33,6 @@ class Inimigo extends Animacao {
   }
 
   aparece() {
-    this.x = width
+    this.x = width;
   }
 }

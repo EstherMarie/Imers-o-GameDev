@@ -28,10 +28,10 @@ let font;
 
 let jogo;
 let telaInicial;
-let cenaAtual = 'telaInicial';
+let cenaAtual = "telaInicial";
 let cenas;
 let botaoGerenciador;
-
+let btnNovoJogo ;
 
 const matrizPersonagem = [
   [10, 10],
