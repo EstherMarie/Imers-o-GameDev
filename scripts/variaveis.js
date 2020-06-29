@@ -10,6 +10,8 @@ let sprite;
 let player;
 let accorn;
 let inimigo;
+let vida;
+let life;
 
 let music;
 let jumpSound;

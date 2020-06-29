@@ -5,6 +5,7 @@ function preload() {
     bg_ground = loadImage('assets/images/background/ground-large.png');
     sprite = loadImage('assets/images/player/sprites.png');
     inimigo = loadImage('assets/images/enemies/enemies.png');
+    vida = loadImage('assets/images/sprites/life.png');
     title = loadImage('assets/images/sprites/title-screen.png');
     startScreen = loadImage('assets/images/sprites/start-screen.png');
     // pressEnter = loadImage('assets/images/sprites/press-enter.png');

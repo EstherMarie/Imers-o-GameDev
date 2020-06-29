@@ -11,6 +11,8 @@ class Jogo {
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
     // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
+    accorn = new Item(matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
+    life = new Vida(3, 3);
     const ant = new Inimigo(
       matrizAnt,
       inimigo,
@@ -47,7 +49,6 @@ class Jogo {
       19,
       100
     );
-    accorn = new Item(matrizAccorn, sprite, width - 20, 180, 32, 28, 16, 14);
 
     inimigos.push(ant);
     inimigos.push(grasshopper);
@@ -79,6 +80,7 @@ class Jogo {
     trees.move();
     ground.exibe();
     ground.move();
+    life.draw();
     points.exibe();
     points.adicionarPontos();
     player.exibe();
