@@ -11,20 +11,13 @@ class Jogo {
     ground = new Cenario(bg_ground, 8);
     points = new Pontuacao();
     player = new Personagem(matrizPersonagem, sprite, 10, 30, 180, 116, 90, 58);
-    // playerJump = new Personagem (matrizPulo, sprite, 10, 180, 116, 90, 58);
     accorn = new Item(matrizAccorn, sprite, width - 20, 150, 32, 28, 16, 14, 0);
-    life = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial);
-    const ant = new Inimigo(
-      matrizAnt,
-      inimigo,
-      width,
-      50,
-      55,
-      47,
-      37,
-      31,
-      13
+    life = new Vida(
+      fita.configuracoes.vidaMaxima,
+      fita.configuracoes.vidaInicial
     );
+
+    const ant = new Inimigo(matrizAnt, inimigo, width, 50, 55, 47, 37, 31, 13);
     const grasshopper = new Inimigo(
       matrizGrasshopper,
       inimigo,
@@ -112,12 +105,25 @@ class Jogo {
       hurtSound.play();
       life.perdeVida();
       player.tornarInvencivel();
-      points.colisaoPontos()
+      points.colisaoPontos();
 
-      if(life.vidas === 0) {
+      if (life.vidas === 0) {
         image(gameOver, width / 2 - 200, height / 3);
         noLoop();
         player.matriz = matrizHurt;
+        
+        btnNovoJogo = createButton('Jogar Novamente');
+        btnNovoJogo.position(width/2 - btnNovoJogo.width/2, height / 8 * 5);
+        btnNovoJogo.mousePressed(() => {
+          btnNovoJogo.remove();
+          loop();
+          inimigos.pop();
+          inimigos.x = width;
+          this.indice = 0;
+          jogo.setup();
+          jogo.draw();
+        });
+        btnNovoJogo.addClass("botao-novo-jogo");
       }
     }
 
@@ -126,8 +132,8 @@ class Jogo {
       accorn.x = width + 550;
       itemSound.play();
       points.itemPontos();
-      
-      if(item === 5) {
+
+      if (item === 5) {
         life.ganhaVida();
       }
     }
