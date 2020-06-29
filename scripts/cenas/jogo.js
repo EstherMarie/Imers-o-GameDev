@@ -51,7 +51,7 @@ class Jogo {
   }
 
   keyPress(key) {
-    if (key === "ArrowUp") {
+    if (key === "ArrowUp" || key === " ") {
       player.pula();
       jumpSound.play();
     }
@@ -111,9 +111,12 @@ class Jogo {
         image(gameOver, width / 2 - 200, height / 3);
         noLoop();
         player.matriz = matrizHurt;
-        
-        btnNovoJogo = createButton('Jogar Novamente');
-        btnNovoJogo.position(width/2 - btnNovoJogo.width/2, height / 8 * 5);
+
+        btnNovoJogo = createButton("Jogar Novamente");
+        btnNovoJogo.position(
+          width / 2 - btnNovoJogo.width / 2,
+          (height / 8) * 5
+        );
         btnNovoJogo.mousePressed(() => {
           btnNovoJogo.remove();
           loop();
