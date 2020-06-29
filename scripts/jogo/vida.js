@@ -17,4 +17,14 @@ class Vida {
       image(vida, posicao + margem, this.y, this.largura, this.altura);
     }
   }
+
+  ganhaVida() {
+      if(this.vidas <= this.total) {
+          this.vidas++
+      }
+  }
+
+  perdeVida() {
+      this.vidas--
+  }
 }

@@ -13,17 +13,15 @@ class TelaInicial {
         mountains.move();
         trees.exibe();
         trees.move();
-        ground.exibe();
-        ground.move();
         this._titulo();
     }
 
     _imagemDeFundo() {
         // image(startScreen, 0, 0, width, height)
-        clouds = new Cenario(bg_clouds, 2);
-        mountains = new Cenario(bg_mountains, 5);
-        trees = new Cenario(bg_trees, 10);
-        ground = new Cenario(bg_ground, 20);
+        // clouds = new Cenario(bg_clouds, 2);
+        // mountains = new Cenario(bg_mountains, 5);
+        // trees = new Cenario(bg_trees, 10);
+        // ground = new Cenario(bg_ground, 20);
     }
 
     _titulo() {
