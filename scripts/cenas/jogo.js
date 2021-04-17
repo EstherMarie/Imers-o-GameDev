@@ -86,7 +86,7 @@ class Jogo {
     const inimigo = inimigos[linhaAtual.inimigo];
     const inimigoVisivel = inimigo.x < -inimigo.largura;
 
-    inimigo.velocidade = linhaAtual.velocidade;
+    inimigo.velocidade = linhaAtual.velocidade * rodada;
 
     inimigo.exibe();
     inimigo.move();
@@ -137,8 +137,26 @@ class Jogo {
       accorn.x = width + 550;
       itemSound.play();
       points.itemPontos();
-      accorn.ganhaItem();
+      accorn.ganhaItem(); 
+      console.log('itens:', accorn.item)
+
+      if(accorn.item % 5 == 0) {
+        console.log('mais vida!')
+        life.ganhaVida() 
+      } 
+
+      if(accorn.item % 6 == 0) {
+        if(rodada >= 1.4) {
+          rodada += 0
+        } else {
+          rodada += 0.2
+          console.log('rodada:', rodada)
+          console.log('mais velocidade')
+        }
+
+      }
     }
+    
 
     function pulo() {
       if (player.y != player.yInicial) {

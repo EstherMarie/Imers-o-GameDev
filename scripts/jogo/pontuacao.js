@@ -15,10 +15,10 @@ class Pontuacao {
   }
 
   itemPontos() {
-    this.pontos += 150;
+    this.pontos += 100;
   }
 
   colisaoPontos() {
-    this.pontos -= 100;
+    this.pontos -= 50;
   }
 }

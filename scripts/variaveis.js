@@ -23,6 +23,7 @@ let points;
 let startScreen;
 let title;
 // let pressEnter;
+let rodada = 1;
 let GameOver;
 let font;
 
