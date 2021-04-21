@@ -1,10 +1,15 @@
 # Imersao-GameDev
 
 Jogo estilo Endless Runner feito durante a Imersão GameDev da Alura.
-
-Theme: [SunnyLand Woods by ansimuz](https://ansimuz.itch.io/sunnyland-woods)
-
+Ganhador de uma [menção honrosa](https://imersao-gamedev.github.io/placar/)
 
 Jogue ele [aqui](https://esthermarie.github.io/Imersao-GameDev/)
 
-[Link para o P5 Editor](https://editor.p5js.org/Alnithak/full/mX63VFtma)
+## Theme:
+[SunnyLand Woods by ansimuz](https://ansimuz.itch.io/sunnyland-woods)
+
+## Ferramentas:
+- P5JS
+- JavaScript
+
+[Link para o P5 Editor](https://editor.p5js.org/Alni/full/ccP0Z9meS)

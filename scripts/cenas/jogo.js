@@ -110,6 +110,7 @@ class Jogo {
       if (life.vidas === 0) {
         image(gameOver, width / 2 - 200, height / 3);
         noLoop();
+        rodada = 1;
         player.matriz = matrizHurt;
 
         btnNovoJogo = createButton("Jogar Novamente");
