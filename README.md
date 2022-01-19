@@ -1,7 +1,9 @@
 # Imersao-GameDev
 
+<img src="https://raw.githubusercontent.com/imersao-gamedev/placar/master/assets/mencoesHonrosas/15.png">
+
 Jogo estilo Endless Runner feito durante a Imersão GameDev da Alura.
-Ganhador de uma [menção honrosa](https://imersao-gamedev.github.io/placar/)
+Ganhador de uma [menção honrosa](https://imersao-gamedev.github.io/placar/).
 
 Jogue ele [aqui](https://esthermarie.github.io/Imersao-GameDev/)
 
